@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hide.me無料ユーザ向けNetflix作品リスト</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>hide.me無料ユーザ向けNetflix作品リスト</h1>
+            <p class="subtitle">日本で視聴できない作品を国別に表示</p>
+        </header>
+
+        <div class="notice-section" style="margin: 20px 0; padding: 15px; background: #f0f9ff; border-left: 4px solid #3b82f6; border-radius: 4px;">
+            <h3 style="margin: 0 0 10px 0; color: #1e40af; font-size: 16px;">📋 ご利用にあたって</h3>
+            <ul style="margin: 0; padding-left: 20px; color: #1e3a8a; line-height: 1.8;">
+                <li>このデータは <strong id="dataTimestamp">読み込み中...</strong> 時点の<a href="https://unogs.com/" target="_blank" rel="noopener noreferrer" style="color: #2563eb; text-decoration: underline;">uNoGS</a>の情報を元に作成しています</li>
+                <li>hide.me の無料プランで接続可能な7ヶ国（アメリカ、オランダ、スイス、ドイツ、フィンランド、フランス、英国）の作品を表示しています</li>
+                <li>uNoGSの情報が誤っている場合、視聴できると表示されている国をhide.meで設定しても作品が視聴できませんので、その点はご了承ください</li>
+            </ul>
+        </div>
+
+        <div class="controls">
+            <button id="loadBtn" class="btn btn-primary">作品リストを表示</button>
+            <div class="status" id="status"></div>
+        </div>
+
+        <div class="filter-section">
+            <h2>国でフィルター</h2>
+            <div style="margin-bottom: 15px; display: flex; gap: 15px; align-items: center;">
+                <label class="checkbox-label" style="background: #667eea; color: white; font-weight: 600;">
+                    <input type="checkbox" id="selectAll" checked> 全て選択
+                </label>
+                <label class="checkbox-label" style="background: #6c757d; color: white; font-weight: 600;">
+                    <input type="checkbox" id="deselectAll"> 全て解除
+                </label>
+            </div>
+            <div class="country-filters">
+                <label class="checkbox-label">
+                    <input type="checkbox" class="country-checkbox" value="US" checked> アメリカ
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" class="country-checkbox" value="NL" checked> オランダ
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" class="country-checkbox" value="CH" checked> スイス
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" class="country-checkbox" value="DE" checked> ドイツ
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" class="country-checkbox" value="FI" checked> フィンランド
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" class="country-checkbox" value="FR" checked> フランス
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" class="country-checkbox" value="GB" checked> 英国
+                </label>
+            </div>
+        </div>
+
+        <div class="results-section">
+            <h2>結果 (<span id="resultCount">0</span>件)</h2>
+            <div id="results" class="results-grid"></div>
+        </div>
+    </div>
+
+    <!-- モーダル -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-image-container">
+                <img id="modalImage" src="" alt="">
+            </div>
+            <h2 id="modalTitle"></h2>
+            <div class="modal-meta">
+                <span id="modalType"></span>
+                <span id="modalRating"></span>
+            </div>
+            <div class="modal-countries" id="modalCountries"></div>
+            <h3>概要</h3>
+            <p id="modalSynopsis"></p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
